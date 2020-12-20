@@ -1,0 +1,39 @@
+name: Testing
+version: ${project.version}
+main: me.mythical83.testing.Main
+api-version: 1.16
+authors: [ Mythical83 ]
+description: Just me testing with coding minecraft plugins
+commands:
+  c:
+    description: Clears the users inventory
+    usage: /<command>
+  god:
+    description: Gives the user 32k god gear
+    usage: /<command>
+  fly:
+    description: Allows you to fly
+    usage: /<command>
+  middle:
+    description: Flips you off in chat
+    usage: /<command>
+  gms:
+    description: Sets the users gamemode to survival
+  gma:
+    description: Sets the users gamemode to adventure
+  gmsp:
+    description: Sets the users gamemode to spectator
+  gmc:
+    description: Sets the users gamemode to creative
+  launch:
+    description: Launches the user through the air
+    usage: /<command> (speed) (player)
+  heal:
+    description: Heals the user
+    usage: /<command>
+  enhancement:
+    description: Gives the user gear that increases their natural capabilities
+    usage: /<command>
+  kits:
+    description: Opens up the kits menu
+    usage: /<command> (Player)
