@@ -17,8 +17,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.util.ArrayList;
 import java.util.List;
 
-import static me.mythical83.testing.commands.EnhancedGear.*;
-import static me.mythical83.testing.commands.God.*;
+import static me.mythical83.testing.ItemStacks.EnhancedStack.*;
+import static me.mythical83.testing.ItemStacks.GodStack.*;
 
 public class SelectKit implements CommandExecutor, Listener{
     private final Main main;
@@ -35,7 +35,7 @@ public class SelectKit implements CommandExecutor, Listener{
         if(sender instanceof Player) {
             Player player = (Player) sender;
 
-            if(player.isOp() || player.hasPermission("placeholder")) {
+            if(player.isOp() || player.hasPermission("test.kits")) {
                 if (args.length == 0) {
                     player.openInventory(inv);
                 } else if (args.length == 1) {
@@ -86,48 +86,25 @@ public class SelectKit implements CommandExecutor, Listener{
             Inventory inv = player.getInventory();
             Location loc = player.getLocation();
             World world = player.getWorld();
-            player.getInventory().clear();
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Helmet());
-            } else {
-                inv.addItem(Helmet());
-            }
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Chestplate());
-            } else {
-                inv.addItem(Chestplate());
-            }
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Leggings());
-            } else {
-                inv.addItem(Leggings());
-            }
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Boots());
-            } else {
-                inv.addItem(Boots());
-            }
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Stacked());
-            } else {
-                inv.addItem(Stacked());
-            }
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Sword());
-            } else {
-                inv.addItem(Sword());
-            }
+            inv.clear();
+
+            player.getInventory().setHelmet(Helmet());
+            player.getInventory().setChestplate(Chestplate());
+            player.getInventory().setLeggings(Leggings());
+            player.getInventory().setBoots(Boots());
+            inv.addItem(Sword());
+            inv.addItem(Stacked());
+
             player.closeInventory();
         } else if (e.getSlot() == 1) {
             Inventory inv = player.getInventory();
             Location loc = player.getLocation();
             World world = player.getWorld();
             inv.clear();
-            if (inv.firstEmpty() == -1) {
-                world.dropItemNaturally(loc, Godsword());
-            } else {
-                inv.addItem(Godsword());
-            }
+
+            inv.addItem(godSword());
+            player.getInventory().setHelmet(godHelmet());
+
             player.closeInventory();
         }
     }
